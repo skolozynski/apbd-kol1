@@ -1,4 +1,5 @@
-﻿using Kolokwium1.Repositories;
+﻿using Kolokwium1.Models.DTOs;
+using Kolokwium1.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Kolokwium1.Controllers;
@@ -23,6 +24,13 @@ public class BooksController : ControllerBase
         var res = await _bookRepository.GetBook(id);
         return Ok(res);
     }
-    
-    
+
+    [HttpPost]
+    public async Task<IActionResult> AddBook(AddBookDTO addBookDto)
+    {
+        // if (!await _bookRepository.DoesAuthorExist()) ;
+        var added = await _bookRepository.AddBook(addBookDto);
+
+        return Created("", added);
+    }
 }
