@@ -138,7 +138,7 @@ public class BookRepository : IBookRepository
 
         BookWithAuthorsDTO res = new BookWithAuthorsDTO()
         {
-            Id = (int)id,
+            Id = Convert.ToInt32(id),
             Title = addBookDto.Title,
             Authors = addBookDto.Authors
         };
